@@ -13,9 +13,9 @@
  * Text Domain:       wp-acf-config-panel-pages
 */
 
-define( 'ABSPATH' ) or die ( 'Unauthorized Access' );
+defined( 'ABSPATH' ) or die ( 'Unauthorized Access' );
 
-if ( function_exists( 'acf_add_options_page' )) {
+if ( function_exists( 'acf_add_options_page' ) ) {
     acf_add_options_page(
         array(
             'page_title' => 'Config Panel Page',
