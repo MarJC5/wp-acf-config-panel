@@ -1,3 +1,4 @@
+<?php
 /**
  * Plugin Name:       wp-acf-config-panel
  * Plugin URI:        https://github.com/MarJC5/wp-acf-config-panel
@@ -9,8 +10,8 @@
  * Author URI:        https://github.com/MarJC5
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       wp-acf-config-panel
- */
+ * Text Domain:       wp-acf-config-panel-pages
+*/
 
 define( 'ABSPATH' ) or die ( 'Unauthorized Access' );
 
