@@ -4,7 +4,7 @@
  * Plugin Name:       wp-acf-config-panel
  * Plugin URI:        https://github.com/MarJC5/wp-acf-config-panel
  * Description:       Plugin to add a Config panel in Wordpress wp-admin. This will allow us to create a default ACF for static website contents (eg: phone, street, social links etc ...) 
- * Version:           1.0.7
+ * Version:           1.0.10
  * Requires at least: 5.8.2
  * Requires PHP:      7.4.1
  * Author:            Martin Jean-Christio
@@ -261,13 +261,17 @@ if (function_exists('acf_add_local_field_group')) :
         'hide_on_screen' => '',
         'active' => true,
         'description' => '',
+        'show_in_graphql' => 1,
+        'graphql_field_name' => 'wpConfigPanel',
+        'map_graphql_types_from_location_rules' => 0,
+        'graphql_types' => '',
     ));
 
 endif;
 
 /**
- * query GetMyOptionsPage {
- *    myOptionsPage {
+ * query {
+ *    wpConfigPanel {
  *        someCustomField
  *    }
  * }
