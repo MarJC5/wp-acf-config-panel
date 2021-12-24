@@ -4,7 +4,7 @@
  * Plugin Name:       wp-acf-config-panel
  * Plugin URI:        https://github.com/MarJC5/wp-acf-config-panel
  * Description:       Plugin to add a Config panel in Wordpress wp-admin. This will allow us to create a default ACF for static website contents (eg: phone, street, social links etc ...) 
- * Version:           1.0.10
+ * Version:           1.0.11
  * Requires at least: 5.8.2
  * Requires PHP:      7.4.1
  * Author:            Martin Jean-Christio
@@ -74,7 +74,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'key' => 'field_61c518fb27271',
                         'label' => 'npa',
                         'name' => 'npa',
-                        'type' => 'text',
+                        'type' => 'number',
                         'instructions' => '',
                         'required' => 0,
                         'conditional_logic' => 0,
@@ -83,11 +83,14 @@ if (function_exists('acf_add_local_field_group')) :
                             'class' => '',
                             'id' => '',
                         ),
+                        'show_in_graphql' => 1,
                         'default_value' => '',
                         'placeholder' => '',
                         'prepend' => '',
                         'append' => '',
-                        'maxlength' => '',
+                        'min' => '',
+                        'max' => '',
+                        'step' => '',
                     ),
                     array(
                         'key' => 'field_61c5190e27272',
@@ -129,7 +132,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'key' => 'field_61c5193427274',
                         'label' => 'phone',
                         'name' => 'phone',
-                        'type' => 'text',
+                        'type' => 'number',
                         'instructions' => '',
                         'required' => 0,
                         'conditional_logic' => 0,
@@ -138,17 +141,20 @@ if (function_exists('acf_add_local_field_group')) :
                             'class' => '',
                             'id' => '',
                         ),
+                        'show_in_graphql' => 1,
                         'default_value' => '',
                         'placeholder' => '',
                         'prepend' => '',
                         'append' => '',
-                        'maxlength' => '',
+                        'min' => '',
+                        'max' => '',
+                        'step' => '',
                     ),
                     array(
                         'key' => 'field_61c5193b27275',
                         'label' => 'mobile',
                         'name' => 'mobile',
-                        'type' => 'text',
+                        'type' => 'number',
                         'instructions' => '',
                         'required' => 0,
                         'conditional_logic' => 0,
@@ -157,17 +163,20 @@ if (function_exists('acf_add_local_field_group')) :
                             'class' => '',
                             'id' => '',
                         ),
+                        'show_in_graphql' => 1,
                         'default_value' => '',
                         'placeholder' => '',
                         'prepend' => '',
                         'append' => '',
-                        'maxlength' => '',
+                        'min' => '',
+                        'max' => '',
+                        'step' => '',
                     ),
                     array(
                         'key' => 'field_61c5194127276',
                         'label' => 'email',
                         'name' => 'email',
-                        'type' => 'text',
+                        'type' => 'email',
                         'instructions' => '',
                         'required' => 0,
                         'conditional_logic' => 0,
@@ -176,11 +185,11 @@ if (function_exists('acf_add_local_field_group')) :
                             'class' => '',
                             'id' => '',
                         ),
+                        'show_in_graphql' => 1,
                         'default_value' => '',
                         'placeholder' => '',
                         'prepend' => '',
                         'append' => '',
-                        'maxlength' => '',
                     ),
                 ),
             ),
@@ -226,7 +235,7 @@ if (function_exists('acf_add_local_field_group')) :
                         'key' => 'field_61c5198a27279',
                         'label' => 'link',
                         'name' => 'link',
-                        'type' => 'text',
+                        'type' => 'url',
                         'instructions' => '',
                         'required' => 0,
                         'conditional_logic' => 0,
@@ -235,11 +244,9 @@ if (function_exists('acf_add_local_field_group')) :
                             'class' => '',
                             'id' => '',
                         ),
+                        'show_in_graphql' => 1,
                         'default_value' => '',
                         'placeholder' => '',
-                        'prepend' => '',
-                        'append' => '',
-                        'maxlength' => '',
                     ),
                 ),
             ),
@@ -262,17 +269,34 @@ if (function_exists('acf_add_local_field_group')) :
         'active' => true,
         'description' => '',
         'show_in_graphql' => 1,
-        'graphql_field_name' => 'wpConfigPanel',
+        'graphql_field_name' => 'utils',
         'map_graphql_types_from_location_rules' => 0,
         'graphql_types' => '',
     ));
 
 endif;
 
-/**
- * query {
- *    wpConfigPanel {
- *        someCustomField
- *    }
- * }
- */
+/*
+ query {
+  wp {
+    acfOptionsConfigPanel {
+      utils {
+        social {
+          link
+          name
+        }
+        location {
+          street
+          npa
+          country
+        }
+        contact {
+          email
+          mobile
+          phone
+        }
+      }
+    }
+  }
+}
+*/
